@@ -1,0 +1,23 @@
+name: Auto Commit
+on:
+  schedule:
+    - cron: "0 3 * * *"  # Tous les jours à 03:00
+  workflow_dispatch:
+
+jobs:
+  auto-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update auto log
+        run: echo "Auto-update: $(date)" >> auto.log
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Auto-update logs" || echo "No changes"
+          git push
