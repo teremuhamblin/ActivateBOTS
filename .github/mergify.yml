@@ -1,0 +1,10 @@
+pull_request_rules:
+  - name: Auto-merge Dependabot & Renovate
+    conditions:
+      - or:
+          - author~=dependabot
+          - author~=renovate
+      - status-success=Tests
+    actions:
+      merge:
+        method: squash
