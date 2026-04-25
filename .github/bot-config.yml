@@ -1,0 +1,10 @@
+bot:
+  name: projetrst-bot
+  permissions:
+    issues: write
+    pull_requests: write
+    contents: write
+  actions:
+    - create-issue
+    - comment-pr
+    - update-files
